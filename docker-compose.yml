@@ -1,0 +1,72 @@
+version: '3.8'
+
+services:
+  # Main MCP Server
+  mcp-server:
+    build:
+      context: ./mcp-bridge
+      dockerfile: Dockerfile
+    ports:
+      - "8765:8765"
+    volumes:
+      - cokit-config:/app/config
+    environment:
+      - NODE_ENV=production
+      - FASTCONTEXT_ENDPOINT=http://fastcontext:3000
+      - REDIS_HOST=redis
+      - COKIT_CONFIG_PATH=/app/config/config.json
+    depends_on:
+      - fastcontext
+      - redis
+    restart: unless-stopped
+
+  # FastContext Queue Server
+  fastcontext:
+    build:
+      context: ./fastcontext
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - REDIS_HOST=redis
+      - HF_ENDPOINT_URL=${HF_ENDPOINT_URL:-https://your-endpoint.hf.space}
+      - HF_TOKEN=${HF_TOKEN:-}
+    depends_on:
+      - redis
+    restart: unless-stopped
+
+  # Redis for queue
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+  # Status Dashboard (optional)
+  dashboard:
+    build:
+      context: ./dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    environment:
+      - MCP_SERVER_URL=http://mcp-server:8765
+      - FASTCONTEXT_URL=http://fastcontext:3000
+    depends_on:
+      - mcp-server
+      - fastcontext
+    restart: unless-stopped
+    profiles:
+      - with-dashboard
+
+volumes:
+  cokit-config:
+    driver: local
+  redis-data:
+    driver: local
+
+networks:
+  default:
+    name: cokit-ultra-network
