@@ -24,8 +24,8 @@ export class FastContextClient {
         throw new Error(`FastContext error: ${response.statusText}`);
       }
 
-      const data = await response.json();
-      return data.result;
+      const data = await response.json() as any;
+      return data.result || JSON.stringify(data);
     } catch (error) {
       console.error('FastContext query failed:', error);
       return 'FastContext service unavailable';
@@ -39,10 +39,10 @@ export class FastContextClient {
         return { position: 0, waitTime: 0 };
       }
 
-      const data = await response.json();
+      const data = await response.json() as any;
       return {
-        position: data.position,
-        waitTime: data.estimated_wait_seconds,
+        position: data.position || 0,
+        waitTime: data.estimated_wait_seconds || 0,
       };
     } catch {
       return { position: 0, waitTime: 0 };

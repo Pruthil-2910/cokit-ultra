@@ -65,10 +65,10 @@ async def query_fastcontext(request: QueryRequest):
 
 async def call_hf_endpoint(query: str, codebase_path: str) -> str:
     """Call the Hugging Face Inference Endpoint"""
-    import aiohttp
+    import httpx
     
-    async with aiohttp.ClientSession() as session:
-        async with session.post(
+    async with httpx.AsyncClient() as client:
+        response = await client.post(
             f"{HF_ENDPOINT_URL}/v1/chat/completions",
             headers={
                 "Content-Type": "application/json",
@@ -83,13 +83,14 @@ async def call_hf_endpoint(query: str, codebase_path: str) -> str:
                     }
                 ],
                 "max_tokens": 1000,
-            }
-        ) as response:
-            if response.status != 200:
-                raise HTTPException(status_code=500, detail=f"HF API error: {response.status}")
-            
-            data = await response.json()
-            return data["choices"][0]["message"]["content"]
+            },
+            timeout=30.0
+        )
+        if response.status_code != 200:
+            raise HTTPException(status_code=500, detail=f"HF API error: {response.status_code}")
+        
+        data = response.json()
+        return data["choices"][0]["message"]["content"]
 
 @app.get("/job/{job_id}")
 def get_job_status(job_id: str):

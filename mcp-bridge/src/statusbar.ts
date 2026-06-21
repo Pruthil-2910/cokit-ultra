@@ -34,7 +34,7 @@ function render() {
   const parts = [];
   
   // Plugin status
-  plugins.forEach(p => {
+  plugins.forEach((p: any) => {
     const icon = p.enabled ? '✅' : '❌';
     parts.push(`${icon} ${p.name}`);
   });

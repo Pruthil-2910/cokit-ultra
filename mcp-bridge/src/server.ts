@@ -1,8 +1,8 @@
 import { Server } from '@modelcontextprotocol/sdk/server/index.js';
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js';
 import {
-  CallToolRequest,
-  ListToolsRequest,
+  CallToolRequestSchema,
+  ListToolsRequestSchema,
   Tool,
 } from '@modelcontextprotocol/sdk/types.js';
 import express from 'express';
@@ -145,12 +145,12 @@ class CokitUltraServer {
 
   private setupHandlers() {
     // List tools
-    this.server.setRequestHandler(ListToolsRequest, async () => {
+    this.server.setRequestHandler(ListToolsRequestSchema, async () => {
       return { tools: TOOLS };
     });
 
     // Call tools
-    this.server.setRequestHandler(CallToolRequest, async (request) => {
+    this.server.setRequestHandler(CallToolRequestSchema, async (request) => {
       const { name, arguments: args } = request.params;
 
       switch (name) {
