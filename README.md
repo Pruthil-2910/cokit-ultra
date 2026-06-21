@@ -6,7 +6,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](https://www.docker.com/)
 
-> Save **70-80% on tokens** while maintaining 100% accuracy. Built for Claude Code, powered by Microsoft's FastContext-4B.
+> Save **70-80% on tokens** while maintaining 100% accuracy. Built for Claude Code, using Microsoft's FastContext-4B.
 
 ## Quick Start
 
