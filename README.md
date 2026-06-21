@@ -8,7 +8,7 @@
 
 > Save **70-80% on tokens** while maintaining 100% accuracy. Built for Claude Code, powered by Microsoft's FastContext-4B.
 
-## ⚡ Quick Start
+## Quick Start
 
 ```bash
 # macOS/Linux
@@ -22,7 +22,7 @@ irm https://raw.githubusercontent.com/YOUR-ORG/cokit-ultra/main/scripts/install.
 
 ---
 
-## 🎯 What You Get
+## What You Get
 
 | Feature | Savings | Description |
 |---------|---------|-------------|
@@ -36,7 +36,7 @@ irm https://raw.githubusercontent.com/YOUR-ORG/cokit-ultra/main/scripts/install.
 
 ---
 
-## 🎮 Commands
+## Commands
 
 ### Toggle Plugins
 
@@ -74,7 +74,7 @@ irm https://raw.githubusercontent.com/YOUR-ORG/cokit-ultra/main/scripts/install.
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────┐
@@ -111,7 +111,7 @@ irm https://raw.githubusercontent.com/YOUR-ORG/cokit-ultra/main/scripts/install.
 
 ---
 
-## 🐳 Docker Deployment
+## Docker Deployment
 
 ### Start All Services
 
@@ -137,7 +137,7 @@ docker-compose --profile with-dashboard up -d
 
 ---
 
-## ⚙️ Configuration
+## Configuration
 
 ### Config File: `~/.cokit-ultra/config.json`
 
@@ -168,7 +168,7 @@ REDIS_PORT=6379
 
 ---
 
-## 📊 Token Savings Tracker
+## Token Savings Tracker
 
 Real-time tracking of your token savings:
 
@@ -187,7 +187,7 @@ Real-time tracking of your token savings:
 
 ---
 
-## 🔧 Development
+## Development
 
 ### Local Development
 
@@ -211,7 +211,7 @@ npm test
 
 ---
 
-## 🚨 Troubleshooting
+## Troubleshooting
 
 ### Services Won't Start
 
@@ -249,7 +249,7 @@ docker-compose restart mcp-server
 
 ---
 
-## 📦 Components
+## Components
 
 cokit-ultra integrates these amazing projects:
 
@@ -261,7 +261,7 @@ cokit-ultra integrates these amazing projects:
 
 ---
 
-## 🎯 Roadmap
+## Roadmap
 
 - [ ] Local 4B model download (offline mode)
 - [ ] More embedding models for code-memory
@@ -271,13 +271,13 @@ cokit-ultra integrates these amazing projects:
 
 ---
 
-## 📄 License
+## License
 
 MIT License - see [LICENSE](LICENSE) for details.
 
 ---
 
-## 🙏 Credits
+## Credits
 
 Built with love by combining the best token-saving tools in one package. Special thanks to all the upstream maintainers.
 
@@ -285,7 +285,7 @@ Built with love by combining the best token-saving tools in one package. Special
 
 ---
 
-## 📞 Support
+## Support
 
 - **Issues:** [GitHub Issues](https://github.com/YOUR-ORG/cokit-ultra/issues)
 - **Discord:** [Join our Discord](https://discord.gg/your-invite)
